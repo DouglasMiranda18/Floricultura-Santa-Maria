@@ -1,5 +1,86 @@
-
 const cart = [];
+
+lista = [
+    {
+        "nome": "Monsenhor amarelo, com rosas vermelhas",
+        "tamanho": {
+            "p": 180,
+            "m": 250,
+            "g": 400
+        }
+    },
+    {
+        "nome": "Monsenhor branco com rosas champanhe",
+        "tamanho": {
+            "p": 150,
+            "m": 250,
+            "g": 400
+        }
+    },
+    {
+        "nome": "Monsenhor branco com rosas brancas",
+        "tamanho": {
+            "p": 150,
+            "m": 250,
+            "g": 400
+        }
+    },
+    {
+        "nome": "Buquê de girassóis",
+        "tamanho": {
+            "p": 150
+        }
+    },
+    {
+        "nome": "Buquê simples de rosas vermelhas",
+        "tamanho": {
+            "p": 70
+        }
+    },
+    {
+        "nome": "Buque luxo de rosas vermelhas com 30 rosas",
+        "tamanho": {
+            "p": 150
+        }
+    },
+    {
+        "nome": "Buquê top de rosas vermelhos com 50 rosas e Gpison fila",
+        "tamanho": {
+            "p": 250
+        }
+    },
+    {
+        "nome": "Buquê simples de rosas amarelas",
+        "tamanho": {
+            "p": 70
+        }
+    },
+    {
+        "nome": "Buquê simples de rosas champanhe",
+        "tamanho": {
+            "p": 70
+        }
+    },
+    {
+        "nome": "Mix colorido",
+        "tamanho": {
+            "p": 80
+        }
+    },
+    {
+        "nome": "Buquê simples de flores do campo",
+        "tamanho": {
+            "p": 80
+        }
+    },
+    {
+        "nome": "Buquê luxo de flores do campo",
+        "tamanho": {
+            "p": 150
+        }
+    }
+]
+
 function addToCart(name, price) {
     const item = cart.find(item => item.name === name);
     if (item) {
@@ -66,40 +147,6 @@ function prevSlide() {
 // Alterna automaticamente a cada 3 segundos
 setInterval(nextSlide, 3000);
 
-lista = [
-    {
-        "nome": "Coroa de flores",
-        "tamanho": {
-            "p": 150,
-            "m": 200,
-            "g": 250
-        }
-    },
-    {
-        "nome": "Flor 2",
-        "tamanho": {
-            "p": 150,
-            "m": 200,
-            "g": 250
-        }
-    },
-    {
-        "nome": "Flor 3",
-        "tamanho": {
-            "p": 150,
-            "m": 200,
-            "g": 250
-        }
-    },
-    {
-        "nome": "Flor 4",
-        "tamanho": {
-            "p": 150,
-            "m": 200,
-            "g": 250
-        }
-    }
-]
 function getPrice(id, tipo) {
     var tamanho = document.getElementById(id).value
 
