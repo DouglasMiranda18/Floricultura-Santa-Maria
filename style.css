@@ -1,7 +1,7 @@
 .logo {
     width: 100px;
     border-radius: 50%;
-    
+
 }
 
 
@@ -14,6 +14,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 header {
@@ -77,10 +78,9 @@ header button {
 }
 
 .cart {
-    position: fixed;
+    position: absolute;
     right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 150px;
     width: 320px;
     background: #fff;
     padding: 20px;
@@ -97,10 +97,11 @@ header button {
     width: inherit;
 }
 
-.cartbutton{
+.cartbutton {
     background-color: transparent;
     border: none;
 }
+
 .menu-toggle {
     display: flex;
     flex-direction: column;
@@ -165,7 +166,8 @@ header button {
     display: block;
 }
 
-.prev, .next {
+.prev,
+.next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -176,9 +178,37 @@ header button {
     cursor: pointer;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev {
+    left: 10px;
+}
 
-.prev:hover, .next:hover {
+.next {
+    right: 10px;
+}
+
+.prev:hover,
+.next:hover {
     background: rgba(0, 0, 0, 0.8);
+}
+
+.img-product {
+    width: inherit;
+    border-radius: 10px;
+}
+
+.cart input {
+    margin: 5px;
+    padding: 5px;
+    outline: none;
+    border-radius: 10px;
+}
+
+.cart button {
+    outline: none;
+    background-color: #ff6b6b;
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+    color: white;
+    font-family: sans-serif;
 }
