@@ -2,14 +2,6 @@ const cart = [];
 
 lista = [
     {
-        "nome": "Monsenhor amarelo, com rosas vermelhas",
-        "tamanho": {
-            "p": 180,
-            "m": 250,
-            "g": 400
-        }
-    },
-    {
         "nome": "Monsenhor branco com rosas champanhe",
         "tamanho": {
             "p": 150,
@@ -115,13 +107,25 @@ function sendOrder() {
     const name = document.getElementById("customerName").value;
     const phone = document.getElementById("customerPhone").value;
     const address = document.getElementById("customerAddress").value;
-    let message = `Pedido de ${name}%0AEndereço: ${address}%0AItens:`;
+
+    let message = `🌸 *Novo Pedido!* 🌸%0A%0A`;
+    message += `👤 *Cliente:* ${name}%0A📞 *Telefone:* ${phone}%0A🏠 *Endereço:* ${address}%0A%0A`;
+    message += `🛍 *Itens do Pedido:*%0A`;
+
     cart.forEach(item => {
-        message += `%0A- ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}`;
+        message += `• ${item.quantity}x ${item.name} (Tamanho: ${item.size.toUpperCase()}) - R$ ${(item.price * item.quantity).toFixed(2)}%0A`;
     });
-    message += `%0ATotal: R$ ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
+
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    message += `%0A💰 *Total:* R$ ${total.toFixed(2)}%0A%0A`;
+
+    // Finaliza a mensagem
+    message += `🕒 *Aguardamos a confirmação do pedido!*\n`;
+
+    // Envia a mensagem pelo WhatsApp
     window.open(`https://wa.me/5581986103152?text=${message}`, '_blank');
 }
+
 function toggleMenu() {
     document.querySelector('.nav-menu').classList.toggle('active');
 }
