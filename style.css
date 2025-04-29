@@ -1,9 +1,16 @@
 .logo {
-    width: 100px;
+    width: 120px;
     border-radius: 50%;
+    transform: translateX(40px); /* Move para a direita */
 
 }
+.logo2 {
+    width: 120px;
+    border-radius: 50%;
+    transform: translateX(-10px); /* Move para a esquerda */
 
+
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -27,6 +34,7 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+   
 }
 
 header button {
