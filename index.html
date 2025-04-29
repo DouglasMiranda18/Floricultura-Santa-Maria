@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floricultura Santa Mari</title>
+    <title>Floricultura Santa Maria</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -208,12 +208,19 @@
     <aside class="cart" id="cart">
         <h2>Carrinho</h2>
         <ul id="cartItems"></ul>
-        <div id="totalPrice"><strong>Total:</strong> R$ 0.00</div>
         <input type="text" id="customerName" placeholder="Seu nome" required>
-        <input type="tel" id="customerPhone" placeholder="Seu telefone" required>
-        <input type="text" id="customerAddress" placeholder="Seu endereço" required>
-        <input type="text" id="paymentMethod" placeholder="Forma de pagamento" required>
-        <button onclick="sendOrder()">Finalizar Pedido</button>
+        <input type="text" id="customerPhone" placeholder="Telefone (00) 123456789" required>
+        <input type="text" id="customerAddress" placeholder="Endereço" required>
+        
+        <select id="paymentMethod" required>
+          <option value="">Selecione uma forma de pagamento</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="Pix">Pix</option>
+          <option value="Cartão">Cartão</option>
+        </select>
+        
+        <button onclick="sendOrder()">Enviar Pedido</button>
+        
     </aside>
 </body>
 
