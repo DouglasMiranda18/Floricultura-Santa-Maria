@@ -107,23 +107,18 @@ function sendOrder() {
     const name = document.getElementById("customerName").value;
     const phone = document.getElementById("customerPhone").value;
     const address = document.getElementById("customerAddress").value;
+    const payment = document.getElementById("paymentMethod").value;
 
-    let message = `🌸 *Novo Pedido!* 🌸%0A%0A`;
-    message += `👤 *Cliente:* ${name}%0A📞 *Telefone:* ${phone}%0A🏠 *Endereço:* ${address}%0A%0A`;
-    message += `🛍 *Itens do Pedido:*%0A`;
-
+    let message = `🌸 Pedido via Floricultura Santa Maria 🌸\n\n👤 Nome: ${name}\n📞 Telefone: ${phone}\n🏠 Endereço: ${address}\n💳 Forma de pagamento: ${payment}\n\n🛍️ Itens do pedido:`;
+    
     cart.forEach(item => {
-        message += `• ${item.quantity}x ${item.name} (Tamanho: ${item.size.toUpperCase()}) - R$ ${(item.price * item.quantity).toFixed(2)}%0A`;
+        message += `\n- ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}`;
     });
 
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    message += `%0A💰 *Total:* R$ ${total.toFixed(2)}%0A%0A`;
+    message += `\n\n💰 Total: R$ ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
 
-    // Finaliza a mensagem
-    message += `🕒 *Aguardamos a confirmação do pedido!*\n`;
-
-    // Envia a mensagem pelo WhatsApp
-    window.open(`https://wa.me/5581986103152?text=${message}`, '_blank');
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/5581986103152?text=${encodedMessage}`, '_blank');
 }
 
 function toggleMenu() {
@@ -169,4 +164,10 @@ function getPrice(id, tipo) {
     span.innerText = preco
 
     return preco ? preco : "Tamanho inválido";
+}
+function goHome() {
+    // Aqui você pode redirecionar para a seção principal da sua página
+    // Exemplo se for uma âncora:
+    window.location.href = "#inicio"; 
+
 }
