@@ -104,13 +104,26 @@ function toggleCart() {
     document.getElementById("cart").classList.toggle("open");
 }
 function sendOrder() {
-    const name = document.getElementById("customerName").value;
-    const phone = document.getElementById("customerPhone").value;
-    const address = document.getElementById("customerAddress").value;
+    const name = document.getElementById("customerName").value.trim();
+    const phone = document.getElementById("customerPhone").value.trim();
+    const address = document.getElementById("customerAddress").value.trim();
     const payment = document.getElementById("paymentMethod").value;
 
-    let message = `🌸 Pedido via Floricultura Santa Maria 🌸\n\n👤 Nome: ${name}\n📞 Telefone: ${phone}\n🏠 Endereço: ${address}\n💳 Forma de pagamento: ${payment}\n\n🛍️ Itens do pedido:`;
-    
+    // Validação dos campos obrigatórios
+    if (!name || !phone || !address || !payment) {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        return;
+    }
+
+    123456789
+    const phonePattern = /^\(\d{2}\)\s?\d{8,9}$/;
+    if (!phonePattern.test(phone)) {
+        alert("Telefone inválido. Use o formato  81123456789.");
+        return;
+    }
+
+    let message = `🌸 Pedido via SiteFloricultura Santa Maria 🌸\n\n👤 Nome: ${name}\n📞 Telefone: ${phone}\n🏠 Endereço: ${address}\n💳 Forma de pagamento: ${payment}\n\n🛍️ Itens do pedido:`;
+
     cart.forEach(item => {
         message += `\n- ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}`;
     });
@@ -118,7 +131,7 @@ function sendOrder() {
     message += `\n\n💰 Total: R$ ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/5581986103152?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/558199976429?text=${encodedMessage}`, '_blank');
 }
 
 function toggleMenu() {
