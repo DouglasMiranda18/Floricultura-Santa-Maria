@@ -68,7 +68,6 @@ header button {
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
-    gap: 20px;
 }
 
 .product:hover {
@@ -221,18 +220,3 @@ header button {
     color: white;
     font-family: sans-serif;
 }
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  select {
-    appearance: none; /* remove a aparência padrão do sistema */
-    background-color: #fff;
-  }
-  
