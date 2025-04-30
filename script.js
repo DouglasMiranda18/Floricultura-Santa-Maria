@@ -92,10 +92,11 @@ function updateCartUI() {
     cartItems.innerHTML = "";
     let total = 0;
     cart.forEach((item, index) => {
-        cartItems.innerHTML += `<li class='cart-item'>
-                    ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}
-                    <button onclick='removeFromCart(${index})'>🗑</button>
-                </li>`;
+        cartItems.innerHTML += `
+            <li class='cart-item'>
+                ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}
+                <button onclick='removeFromCart(${index})'>🗑</button>
+            </li>`;
         total += item.price * item.quantity;
     });
     totalPrice.innerHTML = `<strong>Total:</strong> R$ ${total.toFixed(2)}`;
@@ -104,26 +105,13 @@ function toggleCart() {
     document.getElementById("cart").classList.toggle("open");
 }
 function sendOrder() {
-    const name = document.getElementById("customerName").value.trim();
-    const phone = document.getElementById("customerPhone").value.trim();
-    const address = document.getElementById("customerAddress").value.trim();
+    const name = document.getElementById("customerName").value;
+    const phone = document.getElementById("customerPhone").value;
+    const address = document.getElementById("customerAddress").value;
     const payment = document.getElementById("paymentMethod").value;
 
-    // Validação dos campos obrigatórios
-    if (!name || !phone || !address || !payment) {
-        alert("Por favor, preencha todos os campos obrigatórios.");
-        return;
-    }
-
-    123456789
-    const phonePattern = /^\(\d{2}\)\s?\d{8,9}$/;
-    if (!phonePattern.test(phone)) {
-        alert("Telefone inválido. Use o formato  81123456789.");
-        return;
-    }
-
-    let message = `🌸 Pedido via SiteFloricultura Santa Maria 🌸\n\n👤 Nome: ${name}\n📞 Telefone: ${phone}\n🏠 Endereço: ${address}\n💳 Forma de pagamento: ${payment}\n\n🛍️ Itens do pedido:`;
-
+    let message = `🌸 Pedido via Floricultura Santa Maria 🌸\n\n👤 Nome: ${name}\n📞 Telefone: ${phone}\n🏠 Endereço: ${address}\n💳 Forma de pagamento: ${payment}\n\n🛍️ Itens do pedido:`;
+    
     cart.forEach(item => {
         message += `\n- ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2)}`;
     });
@@ -131,7 +119,7 @@ function sendOrder() {
     message += `\n\n💰 Total: R$ ${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
 
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/558199976429?text=${encodedMessage}`, '_blank');
+    window.open(`https://wa.me/5581986103152?text=${encodedMessage}`, '_blank');
 }
 
 function toggleMenu() {
@@ -160,7 +148,7 @@ function prevSlide() {
 setInterval(nextSlide, 3000);
 
 function getPrice(id, tipo) {
-    var tamanho = document.getElementById(id).value
+    var tamanho = document.getElementById(id).value;
 
     const flor = lista.find(item => item.nome === tipo);
 
@@ -170,11 +158,11 @@ function getPrice(id, tipo) {
 
     const preco = flor.tamanho[tamanho];
 
-    var id_span = `${id}-price`
-    var span = document.getElementById(id_span)
+    var id_span = `${id}-price`;  // Correção aqui
+    var span = document.getElementById(id_span);
 
-    span.innerText = ''
-    span.innerText = preco
+    span.innerText = '';
+    span.innerText = preco;
 
     return preco ? preco : "Tamanho inválido";
 }
